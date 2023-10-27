@@ -1,0 +1,5 @@
+[flake8]
+statistics = true
+count = true
+
+extend-ignore = E203, E501, F811, E711
