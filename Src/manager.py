@@ -8,8 +8,8 @@ class Manager:
     def __init__(self):
         self.__menu_choices = {
             # TODO: Make Encrypt and Decrypt class
-            "1": "self.encrypt_submenu",
-            "2": "self.decrypt_submenu",
+            "1": self.encrypt_submenu,
+            "2": self.decrypt_submenu,
             # TODO: Make ShowResult method
             "3": "self.show_result",
             # TODO: Make Save and Load class, and make buffer
@@ -35,8 +35,7 @@ class Manager:
             os.system("cls")
             self.show_menu()
             if choice := self.get_user_choice(self.__menu_choices):
-                print(choice)
-                # self.__menu_choices[choice]()
+                self.__menu_choices[choice]()
 
     def show_menu(self) -> None:
         """Printing menu"""
@@ -56,8 +55,18 @@ class Manager:
             os.system("cls")
             self.encrypt_menu()
             if choice := self.get_user_choice(self.__encrypt_submenu_choices):
-                print(choice)
-                # self.__encrypt_submenu_choices[choice]()
+                if choice == "3":
+                    break
+                self.__encrypt_submenu_choices[choice]()
+
+    def encrypt_menu(self) -> None:
+        """Printing encrypt menu"""
+        menu = """
+    1. Encrypt string,
+    2. Encrypt from file,
+    3. Exit
+        """
+        print(menu)
 
     def decrypt_submenu(self) -> None:
         """Decrypt submenu"""
@@ -65,8 +74,18 @@ class Manager:
             os.system("cls")
             self.decrypt_menu()
             if choice := self.get_user_choice(self.__decrypt_submenu_choices):
-                print(choice)
-                # self.__decrypt_submenu_choices[choice]()
+                if choice == "3":
+                    break
+                self.__decrypt_submenu_choices[choice]()
+
+    def decrypt_menu(self) -> None:
+        """Printing decrypt menu"""
+        menu = """
+    1. Decrypt string,
+    2. Decrypt from file,
+    3. Exit
+        """
+        print(menu)
 
     def get_user_choice(self, certain_menu: dict) -> int:
         """Getting user choice"""
