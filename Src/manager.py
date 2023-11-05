@@ -42,8 +42,8 @@ class Manager:
         while self.__is_running:
             os.system("cls")
             self.show_menu()
-            if choice := self.get_user_choice(self.__menu_choices):
-                self.__menu_choices[choice]()
+            if choice := self.get_user_choice():
+                self.__menu_choices.get(choice, self.show_error)()
 
     def show_menu(self) -> None:
         """Printing menu"""
@@ -61,13 +61,13 @@ class Manager:
         """Encrypt submenu"""
         while True:
             os.system("cls")
-            self.encrypt_menu()
-            if choice := self.get_user_choice(self.__encrypt_submenu_choices):
+            self.show_encrypt_menu()
+            if choice := self.get_user_choice():
                 if choice == "3":
                     break
-                self.__encrypt_submenu_choices[choice]()
+                self.__encrypt_submenu_choices.get(choice, self.show_error)()
 
-    def encrypt_menu(self) -> None:
+    def show_encrypt_menu(self) -> None:
         """Printing encrypt menu"""
         menu = """
     1. Encrypt string,
@@ -80,13 +80,13 @@ class Manager:
         """Decrypt submenu"""
         while True:
             os.system("cls")
-            self.decrypt_menu()
-            if choice := self.get_user_choice(self.__decrypt_submenu_choices):
+            self.show_decrypt_menu()
+            if choice := self.get_user_choice():
                 if choice == "3":
                     break
-                self.__decrypt_submenu_choices[choice]()
+                self.__decrypt_submenu_choices.get(choice, self.show_error)()
 
-    def decrypt_menu(self) -> None:
+    def show_decrypt_menu(self) -> None:
         """Printing decrypt menu"""
         menu = """
     1. Decrypt string,
@@ -95,7 +95,7 @@ class Manager:
         """
         print(menu)
 
-    def get_user_choice(self, certain_menu: dict) -> int:
+    def get_user_choice(self) -> int:
         """Getting user choice"""
         return input("Enter your choice: ")
 
