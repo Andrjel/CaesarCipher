@@ -1,11 +1,19 @@
 import os
 
 
+# TODO
+# 1. uzyc funkcji show_error
+# 2. jak chcesz walidować to wartow stworzyc funkcje jsonschema.validate
+# 3. dodac isorta
+# 4. doda encyptowanie/dekryptowanie
+
+
 class Manager:
     """Class for managing caesar cipher application."""
 
     #  TODO: Make logger class
     def __init__(self):
+        self.__is_running = True
         self.__menu_choices = {
             # TODO: Make Encrypt and Decrypt class
             "1": self.encrypt_submenu,
@@ -31,7 +39,7 @@ class Manager:
 
     def menu_loop(self) -> None:
         """Menu loop"""
-        while True:
+        while self.__is_running:
             os.system("cls")
             self.show_menu()
             if choice := self.get_user_choice(self.__menu_choices):
@@ -89,9 +97,7 @@ class Manager:
 
     def get_user_choice(self, certain_menu: dict) -> int:
         """Getting user choice"""
-        choice = input("Enter your choice: ")
-        if choice in certain_menu.keys():
-            return choice
-        else:
-            print("Wrong choice!")
-            return None
+        return input("Enter your choice: ")
+
+    def show_error(self):
+        print("Wrong choice!")
