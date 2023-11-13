@@ -1,39 +1,19 @@
 import os
 
 
-# TODO
-# 1. uzyc funkcji show_error
-# 2. jak chcesz walidować to wartow stworzyc funkcje jsonschema.validate
-# 3. dodac isorta
-# 4. doda encyptowanie/dekryptowanie
-
-
 class Manager:
     """Class for managing caesar cipher application."""
 
-    #  TODO: Make logger class
     def __init__(self):
         self.__is_running = True
         self.__menu_choices = {
-            # TODO: Make Encrypt and Decrypt class
-            "1": self.encrypt_submenu,
-            "2": self.decrypt_submenu,
-            # TODO: Make ShowResult method
+            "1": "self.encrypt",
+            "2": "self.decrypt",
             "3": "self.show_result",
-            # TODO: Make Save and Load class, and make buffer
             "4": "self.save_buffer",
             "5": "self.load_buffer",
-            "6": "self.exit",
-        }
-        self.__encrypt_submenu_choices = {
-            "1": "self.encrypt_string",
-            "2": "self.encrypt_from_file",
-            "3": None,
-        }
-        self.__decrypt_submenu_choices = {
-            "1": "self.decrypt_string",
-            "2": "self.decrypt_from_file",
-            "3": None,
+            "6": "clear buffer",
+            "7": "self.exit",
         }
         self.menu_loop()
 
@@ -48,50 +28,13 @@ class Manager:
     def show_menu(self) -> None:
         """Printing menu"""
         menu = """
-    1. Encrypt
-    2. Decrypt
-    3. Show result
-    4. Save buffer
-    5. Load buffer
-    6. Exit
-        """
-        print(menu)
-
-    def encrypt_submenu(self) -> None:
-        """Encrypt submenu"""
-        while True:
-            os.system("cls")
-            self.show_encrypt_menu()
-            if choice := self.get_user_choice():
-                if choice == "3":
-                    break
-                self.__encrypt_submenu_choices.get(choice, self.show_error)()
-
-    def show_encrypt_menu(self) -> None:
-        """Printing encrypt menu"""
-        menu = """
-    1. Encrypt string,
-    2. Encrypt from file,
-    3. Exit
-        """
-        print(menu)
-
-    def decrypt_submenu(self) -> None:
-        """Decrypt submenu"""
-        while True:
-            os.system("cls")
-            self.show_decrypt_menu()
-            if choice := self.get_user_choice():
-                if choice == "3":
-                    break
-                self.__decrypt_submenu_choices.get(choice, self.show_error)()
-
-    def show_decrypt_menu(self) -> None:
-        """Printing decrypt menu"""
-        menu = """
-    1. Decrypt string,
-    2. Decrypt from file,
-    3. Exit
+    1. Encrypt Text
+    2. Decrypt Text
+    3. Show Result
+    4. Save to File
+    5. Load from File
+    6. Clear buffer
+    7. Exit
         """
         print(menu)
 
