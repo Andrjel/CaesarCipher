@@ -9,7 +9,7 @@ class FileHandler:
                 data = json.load(file)
                 return data
         except FileNotFoundError:
-            print(f"File {file_path} not found!")
+            raise FileNotFoundError(f"File {file_path} not found!")
 
     @staticmethod
     def write_to_file(file_path: str, data: str) -> None:

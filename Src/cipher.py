@@ -1,12 +1,15 @@
+SHIFT = 13
+
+
 class Cipher:
     @staticmethod
     def encrypt(text: str) -> str:
         encrypted_text = ""
         for char in text:
-            if char.isalpha():
+            if char.isalpha() and char.isascii():
                 ascii_offset = 65 if char.isupper() else 97
                 encrypted_char = chr(
-                    (ord(char) + 13 - ascii_offset) % 26 + ascii_offset
+                    (ord(char) + SHIFT - ascii_offset) % 26 + ascii_offset
                 )
             else:
                 encrypted_char = char
@@ -17,10 +20,10 @@ class Cipher:
     def decrypt(encrypted_text: str) -> str:
         decrypted_text = ""
         for char in encrypted_text:
-            if char.isalpha():
+            if char.isalpha() and char.isascii():
                 ascii_offset = 65 if char.isupper() else 97
                 decrypted_char = chr(
-                    (ord(char) - 13 - ascii_offset) % 26 + ascii_offset
+                    (ord(char) - SHIFT - ascii_offset) % 26 + ascii_offset
                 )
             else:
                 decrypted_char = char

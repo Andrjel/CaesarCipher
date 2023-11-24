@@ -1,0 +1,10 @@
+{
+    "data": [
+        {
+            "text_before_operation": "SBB jb badb",
+            "text_after_operation": "FOO wo onqo",
+            "operation": "encrypt",
+            "session_time_stamp": "2023/11/14_10:41:58"
+        }
+    ]
+}

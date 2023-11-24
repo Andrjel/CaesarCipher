@@ -29,6 +29,7 @@ class Manager:
             os.system("cls")
             self.show_menu()
             if choice := self.get_user_choice():
+                # TODO try except
                 self.__menu_choices.get(choice, self.show_error)()
 
     def show_menu(self) -> None:
