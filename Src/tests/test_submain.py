@@ -25,7 +25,6 @@ class TestSingleSession:
             text_before_operation=text_before_operation,
             text_after_operation=text_after_operation,
             operation=operation,
-            session_time_stamp=datetime.datetime.now().strftime("%Y/%m/%d_%H:%M:%S"),
         )
         # then
         assert actual.get_data_for_buffer() == expected_dict
